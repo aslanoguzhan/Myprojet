@@ -1,7 +1,13 @@
-  name: Hello World Sample
-  hosts: all
-  tasks:
-    - name: Hello Message
-      debug:
-        msg: "Hello World!"
+- name: playbook
+  hosts: 10.0.111.200
+  become: yes
 
+  tasks:
+
+- name: Call Roles
+  hosts: 10.0.111.200
+  roles:
+   #- hostname
+   #- firewalld
+   #- ntp-config
+   - motd

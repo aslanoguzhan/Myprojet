@@ -3,7 +3,7 @@
     become: yes
     become_user: root
     tasks:
-      - name: Docker Service Enable
+      #- name: Docker Service Enable
         service:
         name: docker
         state: started

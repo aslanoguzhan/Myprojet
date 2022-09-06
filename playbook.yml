@@ -27,8 +27,8 @@
           groups: "docker"
           append: "yes"
           
-      - handlers:
-         name: restart docker
+      #- handlers:
+       #  name: restart docker
          service:
            name: docker
            state: restarted

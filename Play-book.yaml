@@ -1,0 +1,42 @@
+   - name: Docker Service Enable
+     service:
+        name: docker
+        state: started
+        enabled: yes
+
+   - name: Install Docker Compose
+     get_url:
+        url: https://github.com/docker/compose/releases/download/1.29.2/docker-compose-Linux-x86_64
+        dest: /usr/local/bin/docker-compose
+        #mode: 755
+        mode: 'a+x'
+
+   - name: Create docker group
+     group:
+        name: "docker"
+        state: present
+
+   - name: Adding user {{ USER }} to docker group
+     user:
+       name: "devops"
+       groups: "docker"
+       append: "yes"
+
+  # - name: Add remote "ubuntu" user to "docker" group
+  #   remote_user: ubuntu
+  #   user:
+  #     name: "aslan"
+  #     group: "docker"
+  #     append: yes
+  #   tags:
+  #     - docker
+
+  handlers:
+    - name: restart docker
+      service:
+        name: docker
+        state: restarted
+
+  # - name: Reboot server
+  #   command: /sbin/reboot
+                             

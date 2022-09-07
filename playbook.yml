@@ -7,7 +7,7 @@
 - name: Call Roles
   hosts: 10.0.111.200
   roles:
-   - hostname
-   - firewalld
-   - ntp-config
+   #- hostname
+   #- firewalld
+   #- ntp-config
    #- motd   

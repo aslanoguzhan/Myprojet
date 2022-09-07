@@ -7,19 +7,7 @@
 - name: Call Roles
   hosts: 10.0.111.200
   roles:
-   #- hostname
-   #- firewalld
-   #- ntp-config
+   - hostname
+   - firewalld
+   - ntp-config
    #- motd   
-- name: Hostname degistirme
-  hostname:
-  name: ansible-client
-  register: durum
-    
-- name: Restart
-  reboot:
-  when: durum.changed
-- name: Apache yukleme
-  yum:
-  name: httpd
-  state: latest

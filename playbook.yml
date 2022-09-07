@@ -10,13 +10,8 @@
    #- hostname
    #- firewalld
    #- ntp-config
-   #- motd
-   - name: Hostname degistirme
-      hostname:
-          name: ansible-client
-      register: durum
-    
-    - name: Restart
+   #- motd   
+   - name: Restart
       reboot:
       when: durum.changed
    - name: Apache yukleme

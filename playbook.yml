@@ -12,7 +12,6 @@
    #- ntp-config
    #- motd   
 - name: ensure apache is at the latest version
-  yum:
   name: httpd
   state: latest
 - name: ensure apache is running

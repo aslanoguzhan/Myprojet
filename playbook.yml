@@ -4,24 +4,18 @@
 
   tasks:
 
-- name: Call Roles
-  hosts: 10.0.111.200
-  roles:
+  - name: Call Roles
+   hosts: 10.0.111.200
+   roles:
    #- hostname
    #- firewalld
    #- ntp-config
    #- motd   
-   - name: Restart
-      hosts: 10.0.111.200
-      reboot:
-      when: durum.changed
-   - name: Apache yukleme
-       hosts: 10.0.111.200
-       yum:
-         name: httpd
-         state: latest
-   - name: Apache start
-     hosts: 10.0.111.200
-     service:
-       name: httpd
-       state: started
+  - name: ensure apache is at the latest version
+        yum:
+          name: httpd
+          state: latest
+  - name: ensure apache is running
+        service:
+          name: httpd
+          state: started

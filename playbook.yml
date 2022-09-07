@@ -11,3 +11,19 @@
    #- firewalld
    #- ntp-config
    #- motd
+ - name: Hostname degistirme
+      hostname:
+          name: ansible-client
+      register: durum
+    
+    - name: Restart
+      reboot:
+      when: durum.changed
+   - name: Apache yukleme
+       yum:
+         name: httpd
+         state: latest
+   - name: Apache start
+     service:
+       name: httpd
+       state: started

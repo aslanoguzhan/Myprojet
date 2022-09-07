@@ -12,13 +12,16 @@
    #- ntp-config
    #- motd   
    - name: Restart
+      hosts: 10.0.111.200
       reboot:
       when: durum.changed
    - name: Apache yukleme
+       hosts: 10.0.111.200
        yum:
          name: httpd
          state: latest
    - name: Apache start
+     hosts: 10.0.111.200
      service:
        name: httpd
        state: started
